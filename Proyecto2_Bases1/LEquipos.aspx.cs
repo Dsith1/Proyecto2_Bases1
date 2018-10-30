@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto2_Bases1
 {
-    public partial class Resultados : System.Web.UI.Page
+    public partial class LEquipos : System.Web.UI.Page
     {
-        protected string ListaR = "";
+        protected string ListaE = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,7 +17,7 @@ namespace Proyecto2_Bases1
 
             Coneccion a = new Coneccion();
 
-            string players = a.getResultados();
+            string players = a.getEquipos();
 
             string[] jugadores = players.Split(';');
 
@@ -25,7 +25,7 @@ namespace Proyecto2_Bases1
             {
                 string[] b = jugadores[i].Split(',');
 
-                ListaR += "<tr><td align=\"right\">" + b[0]+ "</td><td align=\"center\">" + b[1] + "</td><td align=\"center\"><a href=\"DetalleP.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">ver</a></td><td  align=\"center\">" + b[2] + "</td><td>" + b[3] + "</td></tr>\n ";
+                ListaE += "<tr><td>"+b[0] +"</td><td>" + b[1] +"</td></tr>\n ";
 
 
             }

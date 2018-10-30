@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Resultados.aspx.cs" Inherits="Proyecto2_Bases1.Resultados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LEquipos.aspx.cs" Inherits="Proyecto2_Bases1.LEquipos" %>
 
 <!DOCTYPE html>
 
@@ -81,16 +81,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="text-align:right">Local</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>Visitante</th>
+                            <th>Nombre</th>
+                            <th>Confederacion</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
 
-                        <%= this.ListaR %>
+                        <%= this.ListaE %>
                     </tbody>
 
                 </table>

@@ -71,6 +71,7 @@
     <Content Include="DetalleJ.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
+    <Content Include="LEquipos.aspx" />
     <Content Include="LGoleadores.aspx" />
     <Content Include="LJugadores.aspx" />
     <Content Include="Login.aspx" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LEquipos.aspx.cs">
+      <DependentUpon>LEquipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LEquipos.aspx.designer.cs">
+      <DependentUpon>LEquipos.aspx</DependentUpon>
     </Compile>
     <Compile Include="LGoleadores.aspx.cs">
       <DependentUpon>LGoleadores.aspx</DependentUpon>

@@ -34,7 +34,7 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Equipos</a>
                         <ul>
-                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
+                            <li><a href="LEquipos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Planteles</a></li>
                         </ul>
                     </li>

@@ -299,7 +299,89 @@ namespace Proyecto2_Bases1
                         while (lector.Read())
                         {
 
-                            respuesta += lector["Elocal"] + "," + lector["RLocal"] + "," + lector["Rvisitante"] + "," + lector["visitante"] + ";";
+                            respuesta += lector["Elocal"] + "," + lector["RLocal"] + "," + lector["Rvisitante"] + "," + lector["visitante"] + "," + lector["Partido"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getEquipos()
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select C.Pais,D.nombre as Federacion from (Select A.Nombre as Pais,B.Federacion from (Select Nombre,Pais from Equipo)A, (Select IDpais,Federacion from Pais)B Where A.Pais=B.IDpais)C, (Select codigo,nombre from Federacion)D Where C.Federacion=D.codigo ";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Pais"] + "," + lector["Federacion"]+";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getPartidoD(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select A.codigo,A.Sede,A.Fecha,to_char(A.HOra,'HH24:MI') as Hora,A.Torneo,B.nombre as Principal,C.nombre as Asistente1,D.nombre as Asistente2 from (Select A.codigo,A.Sede,A.Fecha,A.HOra,A.Torneo,B.Arbitro as Principal,C.Arbitro as Asistente1,D.Arbitro as Asistente2 from (Select C.codigo,D.nombre as Sede,C.Fecha,C.Hora,C.Torneo from (Select A.Codigo,A.Sede,A.Fecha,A.Hora,B.nombre as Torneo from (Select Codigo,Sede,Fecha,Hora,Torneo from Partido)A, (Select Codigo,nombre from torneo)B Where A.torneo=B.codigo)C, (Select Codigo, Nombre from Sede)D Where C.Sede=D.codigo)A, (Select Partido,Arbitro from Partido_Arbitro Where puesto=1)B, (Select Partido,Arbitro from Partido_Arbitro Where puesto=2)C, (Select Partido,Arbitro from Partido_Arbitro Where puesto=3)D Where A.codigo=B.partido and A.codigo=C.partido and A.codigo=D.partido)A, (Select Nombre,idarbitro from Arbitro)B, (Select Nombre,idarbitro from Arbitro)C, (Select Nombre,idarbitro from Arbitro)D Where A.Principal=B.idarbitro and A.Asistente1=c.idarbitro and A.Asistente2=D.idarbitro and A.codigo=\'" + codigo+"\'";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Sede"] + "," + lector["Fecha"] + "," + lector["Hora"] + "," + lector["Torneo"] + "," + lector["Principal"] + "," + lector["Principal"] + "," + lector["Asistente1"] + "," + lector["Asistente2"];
                         }
 
 
