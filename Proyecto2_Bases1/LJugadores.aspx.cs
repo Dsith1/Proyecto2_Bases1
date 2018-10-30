@@ -26,7 +26,7 @@ namespace Proyecto2_Bases1
             {
                 string[] b = jugadores[i].Split(',');
 
-                ListaJ += "<tr><td><a href=\"DetalleJ.aspx?Cuenta="+Usuario+"\" >" + b[1]+ "</a></td><td>" + b[2] + "</td><td>" + b[3] + "</td></tr>\n ";
+                ListaJ += "<tr><td><a href=\"DetalleJ.aspx?Cuenta="+Usuario+"&codigo=+"+b[0]+"\">" + b[1]+ "</a></td><td>" + b[2] + "</td><td>" + b[3] + "</td></tr>\n ";
 
 
             }

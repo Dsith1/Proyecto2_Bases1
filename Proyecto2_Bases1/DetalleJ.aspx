@@ -74,11 +74,19 @@
 
     <section id="main" class="container">
         <!-- Main -->
-
+        <header>
+            <h2><%= this.Jnombre %></h2>
+        </header>
         <section class="box">
 
-            
-            
+            <h3>Datos</h3>
+            <p>Goles: <%= this.Jgoles %></p>
+            <p>Posicion: <%= this.Jposicion %></p>
+            <p>Altura: <%= this.Jaltura %></p>
+            <p>Peso: <%= this.Jpeso %></p>
+            <p>Edad: <%= this.Jedad %></p>
+            <p>Nacimiento: <%= this.Jnacimiento %></p>
+
 
         </section>
 
