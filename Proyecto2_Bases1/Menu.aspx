@@ -26,7 +26,7 @@
                         <a href="#" class="icon fa-angle-down">Jugadores</a>
                         <ul>
                             <li><a href="LJugadores.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
-                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
+                            <li><a href="LGoleadores.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
 
                         </ul>
                     </li>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LJugadores.aspx.cs" Inherits="Proyecto2_Bases1.LJugadores" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LGoleadores.aspx.cs" Inherits="Proyecto2_Bases1.LGoleadores" %>
 
 <!DOCTYPE html>
 
@@ -82,8 +82,8 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Posicion</th>
                             <th>Pais</th>
+                            <th>Goles</th>
                         </tr>
                     </thead>
                     <tbody>
