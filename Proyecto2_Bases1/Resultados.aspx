@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Resultados.aspx.cs" Inherits="Proyecto2_Bases1.Resultados" %>
 
 <!DOCTYPE html>
 
@@ -25,8 +25,8 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Jugadores</a>
                         <ul>
-                            <li><a href="LJugadores.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
-                            <li><a href="LGoleadores.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
 
                         </ul>
                     </li>
@@ -42,7 +42,7 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Partidos</a>
                         <ul>
-                            <li><a href="Resultados.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
 
                         </ul>
                     </li>
@@ -77,9 +77,27 @@
 
         <section class="box">
 
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align:right">Local</th>
+                            <th></th>
+                            <th></th>
+                            <th>Visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaR %>
+                    </tbody>
+
+                </table>
+            </div>
+            <ul>
+            </ul>
 
 
-            
         </section>
 
     </section>
@@ -101,4 +119,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

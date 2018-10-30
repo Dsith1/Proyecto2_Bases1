@@ -62,7 +62,7 @@ namespace Proyecto2_Bases1
 
 
                         }
-                       
+
                     }
 
                     con.Close();
@@ -76,10 +76,9 @@ namespace Proyecto2_Bases1
             }
         }
 
-
         public string Login(string Usuario, string contra)
         {
-            string respuesta = "Error"; 
+            string respuesta = "Error";
             using (OracleConnection con = new OracleConnection(Cadena))
             {
                 try
@@ -95,9 +94,9 @@ namespace Proyecto2_Bases1
                         while (lector.Read())
                         {
 
-                            respuesta = lector["administrador"]+"";
+                            respuesta = lector["administrador"] + "";
                         }
-                       
+
 
 
                     }
@@ -118,10 +117,9 @@ namespace Proyecto2_Bases1
 
         }
 
-
         public string getPaises()
         {
-            string respuesta="";
+            string respuesta = "";
             using (OracleConnection con = new OracleConnection(Cadena))
             {
                 try
@@ -137,9 +135,9 @@ namespace Proyecto2_Bases1
                         while (lector.Read())
                         {
 
-                            respuesta += lector["idPais"] + ","+ lector["Nombre"] +";";
+                            respuesta += lector["idPais"] + "," + lector["Nombre"] + ";";
                         }
-                        
+
 
 
                     }
@@ -212,7 +210,7 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select Nombre,goles,posicion,estatura,peso,(to_number(to_char(sysdate,'YYYY')) - to_number(to_char(nacimiento,'YYYY'))) as edad ,to_char(nacimiento,'dd/mm/yyyy') as nacimiento from jugador Where codigo=\'" + codigo+"\'";
+                        cmd.CommandText = "Select Nombre,goles,posicion,estatura,peso,(to_number(to_char(sysdate,'YYYY')) - to_number(to_char(nacimiento,'YYYY'))) as edad ,to_char(nacimiento,'dd/mm/yyyy') as nacimiento from jugador Where codigo=\'" + codigo + "\'";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
@@ -261,6 +259,47 @@ namespace Proyecto2_Bases1
                         {
 
                             respuesta += lector["codigo"] + "," + lector["Nombre"] + "," + lector["Pais"] + "," + lector["Goles"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getResultados()
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select F.Partido,F.Elocal,F.RLocal,F.Rvisitante,G.nombre as visitante from (select D.Partido,E.nombre as Elocal,D.RLocal,D.Rvisitante,D.Evisitante from (Select A.Partido, A.ELocal,to_char(B.GolesL)as RLocal,to_char(B.GolesV) as Rvisitante,A.Evisitante from (Select Partido,ELocal,Evisitante from Equipo_Partido Where Partido in (Select Partido from Resultado where tipo=1))A, (Select Partido,GolesL,GolesV from Resultado where tipo=1)B Where A.Partido=B.Partido union Select Partido,ELocal,'-','-',Evisitante from (Select Partido,ELocal,Evisitante from Equipo_Partido Where Partido not in (Select Partido from Resultado where tipo=1)))D, (Select idequipo,nombre from Equipo)E Where D.ELocal=E.idequipo)F, (Select idequipo,nombre from Equipo)G Where F.Evisitante=G.idequipo order by partido";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Elocal"] + "," + lector["RLocal"] + "," + lector["Rvisitante"] + "," + lector["visitante"] + ";";
                         }
 
 

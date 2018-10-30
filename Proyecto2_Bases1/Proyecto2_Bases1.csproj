@@ -77,6 +77,7 @@
     <Content Include="Menu.aspx" />
     <Content Include="MenuA.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="Resultados.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Resultados.aspx.cs">
+      <DependentUpon>Resultados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Resultados.aspx.designer.cs">
+      <DependentUpon>Resultados.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
