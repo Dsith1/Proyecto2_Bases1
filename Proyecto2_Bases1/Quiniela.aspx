@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Quiniela.aspx.cs" Inherits="Proyecto2_Bases1.Quiniela" %>
 
 <!DOCTYPE html>
 
@@ -20,13 +20,13 @@
                 <ul>
                     <li><a href="Menu.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Home</a></li>
 
-                    <li><a href="Quiniela.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>" class="button">Quinielas</a></li>
+                    <li><a href="#" class="button">Quinielas</a></li>
 
                     <li>
                         <a href="#" class="icon fa-angle-down">Jugadores</a>
                         <ul>
-                            <li><a href="LJugadores.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
-                            <li><a href="LGoleadores.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
 
                         </ul>
                     </li>
@@ -34,16 +34,15 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Equipos</a>
                         <ul>
-                            <li><a href="LEquipos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
-                            <li><a href="LEquipos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Posiciones</a></li>
-                            <li><a href="Plantel.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Planteles</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Planteles</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="#" class="icon fa-angle-down">Partidos</a>
                         <ul>
-                            <li><a href="Resultados.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
 
                         </ul>
                     </li>
@@ -51,8 +50,8 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Torneo</a>
                         <ul>
-                            <li><a href="Grupos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Grupos</a></li>
-                            <li><a href="Torneos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Posiciones</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Grupos</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
 
                         </ul>
                     </li>
@@ -78,9 +77,27 @@
 
         <section class="box">
 
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Codigo Torneo</th>
+                            <th>Nombre</th>
+                            <th>Puntos</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaT %>
+                    </tbody>
+
+                </table>
+            </div>
+            <ul>
+            </ul>
 
 
-            
         </section>
 
     </section>
@@ -102,4 +119,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

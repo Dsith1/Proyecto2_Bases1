@@ -62,7 +62,24 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == 2)//Entrar Quiniela
+                        {
+                            string[] parametro = parametros.Split(',');
 
+
+                            OracleParameter inval = new OracleParameter("RTorneo", OracleDbType.Int16);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("NParticipante", OracleDbType.Varchar2);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
                     }
 
                     con.Close();
