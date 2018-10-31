@@ -25,7 +25,7 @@ namespace Proyecto2_Bases1
             {
                 string[] b = jugadores[i].Split(',');
 
-                ListaR += "<tr><td align=\"right\">" + b[0]+ "</td><td align=\"center\">" + b[1] + "</td><td align=\"center\"><a href=\"DetalleP.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">ver</a></td><td  align=\"center\">" + b[2] + "</td><td>" + b[3] + "</td></tr>\n ";
+                ListaR += "<tr><td align=\"right\">" + b[0]+ "</td><td align=\"center\">" + b[1] + "</td><td align=\"center\"><a href=\"Partido.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">ver</a></td><td  align=\"center\">" + b[2] + "</td><td>" + b[3] + "</td></tr>\n ";
 
 
             }
