@@ -86,6 +86,7 @@
                             <th></th>
                             <th></th>
                             <th>Visitante</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
