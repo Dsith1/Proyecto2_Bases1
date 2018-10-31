@@ -78,6 +78,7 @@
     <Content Include="Menu.aspx" />
     <Content Include="MenuA.aspx" />
     <Content Include="Partido.aspx" />
+    <Content Include="Plantel.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Resultados.aspx" />
     <Content Include="Web.config" />
@@ -149,6 +150,13 @@
     </Compile>
     <Compile Include="Partido.aspx.designer.cs">
       <DependentUpon>Partido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plantel.aspx.cs">
+      <DependentUpon>Plantel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plantel.aspx.designer.cs">
+      <DependentUpon>Plantel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">

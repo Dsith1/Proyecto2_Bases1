@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Plantel.aspx.cs" Inherits="Proyecto2_Bases1.Plantel" %>
 
 <!DOCTYPE html>
 
@@ -36,7 +36,7 @@
                         <ul>
                             <li><a href="LEquipos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
                             <li><a href="LEquipos.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Posiciones</a></li>
-                            <li><a href="Plantel.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Planteles</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Planteles</a></li>
                         </ul>
                     </li>
 
@@ -77,8 +77,47 @@
         <!-- Main -->
 
         <section class="box">
+            <header>
+                <h2>Plantel</h2>
+            </header>
+            <div class="box">
+                <form method="post" action="#">
+                    <div class="row gtr-50 gtr-uniform">
+                        
 
+                        <div class="col-6 col-12-mobilep">
+                            <select name="Equipos" id="Equipos">
+                                <option value="">- Equipos -</option>
+                                <%= this.LEquipo %>
+                            </select>
+                        </div>
 
+                        <div class="col-12">
+                            <ul class="actions special">
+                                <li>
+                                    <input runat="server" type="submit" value="Ver" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Posicion</th>
+                            <th>Dorsal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaJ %>
+                    </tbody>
+
+                </table>
+            </div>
 
             
         </section>
@@ -102,4 +141,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-
