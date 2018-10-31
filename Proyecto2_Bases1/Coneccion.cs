@@ -502,7 +502,7 @@ namespace Proyecto2_Bases1
                         while (lector.Read())
                         {
 
-                            respuesta += lector["Puesto"] + "," + lector["Nombre"] + "," + lector["Puntos"] + ";";
+                            respuesta += lector["Puesto"] + "," + lector["Equipo"] + "," + lector["Puntos"] + ";";
                         }
 
 
@@ -618,7 +618,7 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select codigo,nombre from Grupo where Torneo="+codigo;
+                        cmd.CommandText = "Select codigo,nombre from Grupo where Torneo="+codigo+" order by nombre ASC";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
