@@ -461,7 +461,7 @@ namespace Proyecto2_Bases1
                         while (lector.Read())
                         {
 
-                            respuesta += lector["Puesto"] + "," + lector["Nombre"] + "," + lector["Puntos"] + ";";
+                            respuesta += lector["Puesto"] + "," + lector["Equipo"] + "," + lector["Puntos"] + ";";
                         }
 
 

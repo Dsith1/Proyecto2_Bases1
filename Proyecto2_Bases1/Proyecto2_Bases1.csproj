@@ -82,6 +82,7 @@
     <Content Include="Plantel.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Resultados.aspx" />
+    <Content Include="Torneos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,13 @@
     </Compile>
     <Compile Include="Resultados.aspx.designer.cs">
       <DependentUpon>Resultados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Torneos.aspx.cs">
+      <DependentUpon>Torneos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Torneos.aspx.designer.cs">
+      <DependentUpon>Torneos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
