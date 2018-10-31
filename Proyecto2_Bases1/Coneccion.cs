@@ -689,5 +689,46 @@ namespace Proyecto2_Bases1
 
         }
 
+        public string getQUinielas(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select B.codigo,B.Nombre as Torneo,A.Puntos,A.Pago from (Select Torneo,Puntos,Pago from Quiniela where participante=\'" + codigo + "\' )A,(Select nombre,codigo from torneo)B WHere A.Torneo=B.codigo";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Codigo"] + "," + lector["Torneo"] + "," + lector["Puntos"] + "," + lector["Pago"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
     }
 }
