@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LParticipantes.aspx.cs" Inherits="Proyecto2_Bases1.LParticipantes" %>
 
 <!DOCTYPE html>
 
@@ -114,7 +114,7 @@
                             <li>
                                 <a href="#">Participantes</a>
                                 <ul>
-                                    <li><a href="LParticipantes.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>"">Listado General</a></li>
+                                    <li><a href="#">Listado General</a></li>
                                     <li><a href="#">Posiciones</a></li>
                                 </ul>
                             </li>
@@ -134,6 +134,26 @@
         <!-- Main -->
 
         <section class="box">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaP %>
+                    </tbody>
+
+                </table>
+            </div>
+            <ul>
+            </ul>
+
         </section>
 
     </section>
@@ -155,4 +175,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

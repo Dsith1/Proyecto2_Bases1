@@ -76,6 +76,7 @@
     <Content Include="LGoleadores.aspx" />
     <Content Include="LJugadores.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="LParticipantes.aspx" />
     <Content Include="Marcador.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuA.aspx" />
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LParticipantes.aspx.cs">
+      <DependentUpon>LParticipantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LParticipantes.aspx.designer.cs">
+      <DependentUpon>LParticipantes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Marcador.aspx.cs">
       <DependentUpon>Marcador.aspx</DependentUpon>

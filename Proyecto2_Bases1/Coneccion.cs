@@ -651,6 +651,47 @@ namespace Proyecto2_Bases1
 
         }
 
+        public string getRankingP(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select rank() over (order by Puntos desc)Puesto,Participante,Puntos from Quiniela where pago=1 and torneo=" + codigo;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Puesto"] + "," + lector["Participante"] + "," + lector["Puntos"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
         public string getPlantel(string codigo)
         {
             string respuesta = "";
@@ -1080,6 +1121,47 @@ namespace Proyecto2_Bases1
                         {
 
                             respuesta += lector["Partido"] + "," + lector["Elocal"] + "," + lector["Glocal"] + "," + lector["Gvisitante"] + "," + lector["Visitante"]+";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getParticipantes()
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select Usuario,Nombre,Apellido,Edad from Participante Where Administrador=0";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Usuario"] + "," + lector["Nombre"] + "," + lector["Apellido"] + "," + lector["Edad"] + ";";
                         }
 
 
