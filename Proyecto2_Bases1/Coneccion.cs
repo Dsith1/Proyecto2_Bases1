@@ -418,14 +418,14 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select C.Pais,D.nombre as Federacion from (Select A.Nombre as Pais,B.Federacion from (Select Nombre,Pais from Equipo)A, (Select IDpais,Federacion from Pais)B Where A.Pais=B.IDpais)C, (Select codigo,nombre from Federacion)D Where C.Federacion=D.codigo ";
+                        cmd.CommandText = "Select C.Pais,D.nombre as Federacion,C.idequipo from (Select A.Nombre as Pais,B.Federacion,A.idequipo from (Select Nombre,Pais,idequipo from Equipo)A,(Select IDpais,Federacion from Pais)B Where A.Pais=B.IDpais)C,(Select codigo,nombre from Federacion)D Where C.Federacion=D.codigo ";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
                         while (lector.Read())
                         {
 
-                            respuesta += lector["Pais"] + "," + lector["Federacion"]+";";
+                            respuesta += lector["Pais"] + "," + lector["Federacion"] + "," + lector["idequipo"] + ";";
                         }
 
 
@@ -1072,14 +1072,14 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select A.Partido,B.nombre as Elocal,to_char(A.golesL) as Glocal ,to_char(A.golesV) as Gvisitante ,C.nombre as Visitante from (Select A.Partido,A.Elocal,A.golesL,A.golesV,A.Evisitante from (Select A.Partido,A.Elocal,B.golesL,B.golesV,A.Evisitante from (Select Partido,Elocal,Evisitante from Equipo_Partido Where Partido in (Select Partido from Resultado where tipo=1))A, (Select Partido,golesL,golesV from Resultado)B Where A.Partido=B.Partido)A, (Select idequipo from Equipo Where nombre=\'" + codigo + "\')B Where A.Elocal=B.idequipo or A.Evisitante=B.idequipo)A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C WHere A.Elocal=B.idequipo and A.Evisitante=C.idequipo union Select A.partido,B.nombre as Elocal,'-' as Glocal,'-' as Gvisitante,C.nombre as Visitante from (Select A.Partido,A.Elocal,A.Evisitante from (Select Partido,Elocal,Evisitante from Equipo_Partido Where Partido not in (Select Partido from Resultado where tipo=1))A, (Select idequipo from Equipo Where nombre=\'"+codigo+ "\')B Where A.Elocal=B.idequipo or A.Evisitante=B.idequipo)A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C WHere A.Elocal=B.idequipo and A.Evisitante=C.idequipo";
+                        cmd.CommandText = "Select A.Partido,B.nombre as Elocal,to_char(A.golesL) as Glocal ,to_char(A.golesV) as Gvisitante ,C.nombre as Visitante from (Select A.Partido,A.Elocal,A.golesL,A.golesV,A.Evisitante from (Select A.Partido,A.Elocal,B.golesL,B.golesV,A.Evisitante from (Select Partido,Elocal,Evisitante from Equipo_Partido Where Partido in (Select Partido from Resultado where tipo=1))A, (Select Partido,golesL,golesV from Resultado)B Where A.Partido=B.Partido)A, (Select idequipo from Equipo Where idequipo=" + codigo + ")B Where A.Elocal=B.idequipo or A.Evisitante=B.idequipo)A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C WHere A.Elocal=B.idequipo and A.Evisitante=C.idequipo union Select A.partido,B.nombre as Elocal,'-' as Glocal,'-' as Gvisitante,C.nombre as Visitante from (Select A.Partido,A.Elocal,A.Evisitante from (Select Partido,Elocal,Evisitante from Equipo_Partido Where Partido not in (Select Partido from Resultado where tipo=1))A, (Select idequipo from Equipo Where idequipo=" + codigo+ ")B Where A.Elocal=B.idequipo or A.Evisitante=B.idequipo)A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C WHere A.Elocal=B.idequipo and A.Evisitante=C.idequipo";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
                         while (lector.Read())
                         {
 
-                            respuesta += lector["Partido"] + "," + lector["Elocal"] + "," + lector["Glocal"] + "," + lector["Gvisitante"] + "," + lector["Visitante"];
+                            respuesta += lector["Partido"] + "," + lector["Elocal"] + "," + lector["Glocal"] + "," + lector["Gvisitante"] + "," + lector["Visitante"]+";";
                         }
 
 

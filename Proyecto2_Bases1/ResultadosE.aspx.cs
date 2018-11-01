@@ -7,17 +7,19 @@ using System.Web.UI.WebControls;
 
 namespace Proyecto2_Bases1
 {
-    public partial class LEquipos : System.Web.UI.Page
+    public partial class ResultadosE : System.Web.UI.Page
     {
-        protected string ListaE = "";
+        protected string ListaR = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string Usuario = Request.QueryString["Cuenta"];
+            string codigo = Request.QueryString["codigo"];
+
 
             Coneccion a = new Coneccion();
 
-            string players = a.getEquipos();
+            string players = a.getPartidoE(codigo);
 
             string[] jugadores = players.Split(';');
 
@@ -25,9 +27,10 @@ namespace Proyecto2_Bases1
             {
                 string[] b = jugadores[i].Split(',');
 
-                ListaE += "<tr><td>"+b[0] +"</td><td>" + b[1] + "</td><td><a href=\"ResultadosE.aspx?Cuenta=" + Usuario + "&codigo=" + b[2] +"\"> Ver Partidos</a></td></tr>\n ";
 
-               
+                ListaR += "<tr><td align=\"right\">" + b[1] + "</td><td align=\"center\">" + b[2] + "</td><td align=\"center\"><a href=\"Partido.aspx?Cuenta=" + Usuario + "&codigo=+" + b[0] + "\">ver</a></td><td  align=\"center\">" + b[3] + "</td><td>" + b[4] + "</td></tr>\n ";
+
+
             }
         }
     }

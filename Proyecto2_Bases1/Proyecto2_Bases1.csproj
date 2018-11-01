@@ -88,6 +88,7 @@
     <Content Include="Registro.aspx" />
     <Content Include="Resultados.aspx" />
     <Content Include="ResultadosA.aspx" />
+    <Content Include="ResultadosE.aspx" />
     <Content Include="Torneos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -229,6 +230,13 @@
     </Compile>
     <Compile Include="ResultadosA.aspx.designer.cs">
       <DependentUpon>ResultadosA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadosE.aspx.cs">
+      <DependentUpon>ResultadosE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadosE.aspx.designer.cs">
+      <DependentUpon>ResultadosE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Torneos.aspx.cs">
       <DependentUpon>Torneos.aspx</DependentUpon>
