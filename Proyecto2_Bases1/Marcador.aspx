@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Marcador.aspx.cs" Inherits="Proyecto2_Bases1.Marcador" %>
 
 <!DOCTYPE html>
 
@@ -84,7 +84,7 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Partidos</a>
                         <ul>
-                            <li><a href="ResultadosA.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Resultados</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Partido</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Resultado</a></li>
 
@@ -119,8 +119,30 @@
     <section id="main" class="container">
         <!-- Main -->
 
-        <section class="box">
-        </section>
+      
+            <header>
+                <h2>Pronostico</h2>
+            </header>
+            <div class="box">
+                <form method="post" action="#">
+                    <div class="row gtr-50 gtr-uniform">
+                        <div class="col-6 col-12-mobilep">
+                            <input type="text" name="Local" id="Local" value="<%= this.Glocal %>" placeholder="<%= this.Nomlocal %>" />
+                        </div>
+                        <div class="col-6 col-12-mobilep">
+                            <input type="text" name="Visitante" id="Visitante" value="<%= this.Gvisitante %>" placeholder="<%= this.Nomvisitante %>" />
+                        </div>
+                        
+
+                        <div class="col-12">
+                            <ul class="actions special">
+                                <li>
+                                    <input runat="server" type="submit" value="Registrar" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
     </section>
     <!-- Footer -->
@@ -141,4 +163,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

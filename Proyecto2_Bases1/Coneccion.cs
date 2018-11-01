@@ -106,6 +106,32 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == )//Registrar Resultado Real
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("RPartido", OracleDbType.Int16);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Glocal", OracleDbType.Int16);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Gvisita", OracleDbType.Int16);
+                            inval.Value = parametro[2];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Usuario", OracleDbType.Varchar2);
+                            inval.Value = parametro[3];
+                            cmd.Parameters.Add(inval);
+
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
                     }
 
                     con.Close();

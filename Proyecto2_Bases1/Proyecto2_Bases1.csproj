@@ -76,6 +76,7 @@
     <Content Include="LGoleadores.aspx" />
     <Content Include="LJugadores.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Marcador.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuA.aspx" />
     <Content Include="Partido.aspx" />
@@ -84,6 +85,7 @@
     <Content Include="Quiniela.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Resultados.aspx" />
+    <Content Include="ResultadosA.aspx" />
     <Content Include="Torneos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -141,6 +143,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Marcador.aspx.cs">
+      <DependentUpon>Marcador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Marcador.aspx.designer.cs">
+      <DependentUpon>Marcador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -197,6 +206,13 @@
     </Compile>
     <Compile Include="Resultados.aspx.designer.cs">
       <DependentUpon>Resultados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadosA.aspx.cs">
+      <DependentUpon>ResultadosA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadosA.aspx.designer.cs">
+      <DependentUpon>ResultadosA.aspx</DependentUpon>
     </Compile>
     <Compile Include="Torneos.aspx.cs">
       <DependentUpon>Torneos.aspx</DependentUpon>
