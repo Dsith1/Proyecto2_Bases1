@@ -80,7 +80,7 @@ namespace Proyecto2_Bases1
 
 
                         }
-                        else if (tipo == 3)//Registrar Resultado Usuario
+                        else if (tipo == 3)//Registrar actualizar Resultado Usuario
                         {
                             string[] parametro = parametros.Split(',');
 
@@ -89,16 +89,24 @@ namespace Proyecto2_Bases1
                             inval.Value = parametro[0];
                             cmd.Parameters.Add(inval);
 
-                            inval = new OracleParameter("Glocal", OracleDbType.Int16);
+                            inval = new OracleParameter("Elocal", OracleDbType.Int16);
                             inval.Value = parametro[1];
                             cmd.Parameters.Add(inval);
 
-                            inval = new OracleParameter("Gvisita", OracleDbType.Int16);
+                            inval = new OracleParameter("Glocal", OracleDbType.Int16);
                             inval.Value = parametro[2];
                             cmd.Parameters.Add(inval);
 
-                            inval = new OracleParameter("Usuario", OracleDbType.Varchar2);
+                            inval = new OracleParameter("Evisita", OracleDbType.Int16);
                             inval.Value = parametro[3];
+                            cmd.Parameters.Add(inval);
+                                                     
+                            inval = new OracleParameter("Gvisita", OracleDbType.Int16);
+                            inval.Value = parametro[4];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Usuario", OracleDbType.Varchar2);
+                            inval.Value = parametro[5];
                             cmd.Parameters.Add(inval);
 
 
@@ -490,7 +498,48 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select dense_rank() over (order by Puntos desc)Puesto ,Nombre,Puntos from Equipo";
+                        cmd.CommandText = "Select rank() over (order by Puntos desc)Puesto ,Nombre,Puntos from Equipo";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Puesto"] + "," + lector["Nombre"] + "," + lector["Puntos"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getRankingU(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select rank() over (order by B.Puntos desc)Puesto,A.nombre,B.puntos from (Select idequipo,nombre from equipo)A,(Select equipo,puntos from Equipo_Participante Where Participante=\'"+codigo+ "\')B Where A.idequipo=B.equipo";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
@@ -531,7 +580,7 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select A.Puesto,B.nombre as Equipo,A.Puntos from (Select dense_rank() over (order by Puntos desc)Puesto ,Equipo,Puntos from Torneo_Puntos Where Torneo="+codigo+")A,(Select idEquipo, Nombre from Equipo)B Where A.Equipo = B.Idequipo order by Puesto";
+                        cmd.CommandText = "Select A.Puesto,B.nombre as Equipo,A.Puntos from (Select rank() over (order by Puntos desc)Puesto ,Equipo,Puntos from Torneo_Puntos Where Torneo="+codigo+")A,(Select idEquipo, Nombre from Equipo)B Where A.Equipo = B.Idequipo order by Puesto";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
@@ -572,7 +621,7 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select A.Puesto,B.nombre as Equipo,A.Puntos from (Select dense_rank() over (order by Puntos desc)Puesto ,Equipo,Puntos from Equipo_Grupo Where Grupo=" + codigo + ")A,(Select idEquipo, Nombre from Equipo)B Where A.Equipo = B.Idequipo order by Puesto";
+                        cmd.CommandText = "Select A.Puesto,B.nombre as Equipo,A.Puntos from (Select rank() over (order by Puntos desc)Puesto ,Equipo,Puntos from Equipo_Grupo Where Grupo=" + codigo + ")A,(Select idEquipo, Nombre from Equipo)B Where A.Equipo = B.Idequipo order by Puesto";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
@@ -971,5 +1020,86 @@ namespace Proyecto2_Bases1
 
         }
 
+        public string getPosicionesP()
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select  rank() over (order by Puntos desc)Puesto, Participante,puntos from Quiniela where pago=1";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Puesto"] + "," + lector["Participante"] + "," + lector["puntos"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getPartidoE(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select A.Partido,B.nombre as Elocal,to_char(A.golesL) as Glocal ,to_char(A.golesV) as Gvisitante ,C.nombre as Visitante from (Select A.Partido,A.Elocal,A.golesL,A.golesV,A.Evisitante from (Select A.Partido,A.Elocal,B.golesL,B.golesV,A.Evisitante from (Select Partido,Elocal,Evisitante from Equipo_Partido Where Partido in (Select Partido from Resultado where tipo=1))A, (Select Partido,golesL,golesV from Resultado)B Where A.Partido=B.Partido)A, (Select idequipo from Equipo Where nombre=\'" + codigo + "\')B Where A.Elocal=B.idequipo or A.Evisitante=B.idequipo)A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C WHere A.Elocal=B.idequipo and A.Evisitante=C.idequipo union Select A.partido,B.nombre as Elocal,'-' as Glocal,'-' as Gvisitante,C.nombre as Visitante from (Select A.Partido,A.Elocal,A.Evisitante from (Select Partido,Elocal,Evisitante from Equipo_Partido Where Partido not in (Select Partido from Resultado where tipo=1))A, (Select idequipo from Equipo Where nombre=\'"+codigo+ "\')B Where A.Elocal=B.idequipo or A.Evisitante=B.idequipo)A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C WHere A.Elocal=B.idequipo and A.Evisitante=C.idequipo";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Partido"] + "," + lector["Elocal"] + "," + lector["Glocal"] + "," + lector["Gvisitante"] + "," + lector["Visitante"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
     }
 }

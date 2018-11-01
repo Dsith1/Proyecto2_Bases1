@@ -81,6 +81,8 @@
     <Content Include="MenuA.aspx" />
     <Content Include="Partido.aspx" />
     <Content Include="Plantel.aspx" />
+    <Content Include="Posiciones.aspx" />
+    <Content Include="PosicionesP.aspx" />
     <Content Include="Pronostico.aspx" />
     <Content Include="Quiniela.aspx" />
     <Content Include="Registro.aspx" />
@@ -177,6 +179,20 @@
     </Compile>
     <Compile Include="Plantel.aspx.designer.cs">
       <DependentUpon>Plantel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Posiciones.aspx.cs">
+      <DependentUpon>Posiciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Posiciones.aspx.designer.cs">
+      <DependentUpon>Posiciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PosicionesP.aspx.cs">
+      <DependentUpon>PosicionesP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PosicionesP.aspx.designer.cs">
+      <DependentUpon>PosicionesP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pronostico.aspx.cs">
       <DependentUpon>Pronostico.aspx</DependentUpon>

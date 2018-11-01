@@ -44,7 +44,11 @@ namespace Proyecto2_Bases1
 
             if(!IsPostBack){
 
-                string operacion = cpartido + "," + Nlocal + "," + NVisitante + "," + Usuario;
+                string idlocal = a.getNOmbreE(Nomlocal);
+                string idvisita = a.getNOmbreE(Nomvisitante);
+                string idtorneo = a.getTorneoP(cpartido);
+
+                string operacion = cpartido + "," + idlocal + "," + Nlocal + "," + idvisita + "," + NVisitante + "," + Usuario;
 
                 if (update == 1)
                 {
