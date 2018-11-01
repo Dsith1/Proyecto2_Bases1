@@ -80,6 +80,32 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == 3)//Registrar Resultado Usuario
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("RPartido", OracleDbType.Int16);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Glocal", OracleDbType.Int16);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Gvisita", OracleDbType.Int16);
+                            inval.Value = parametro[2];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Usuario", OracleDbType.Varchar2);
+                            inval.Value = parametro[3];
+                            cmd.Parameters.Add(inval);
+
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
                     }
 
                     con.Close();
@@ -725,6 +751,88 @@ namespace Proyecto2_Bases1
                         {
 
                             respuesta += lector["Codigo"] + "," + lector["Torneo"] + "," + lector["Puntos"] + "," + lector["Pago"] + ";";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getResultado(string usuario,string partido)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select codigo,golesL,golesV from Resultado Where codigo in(Select resultado from resultado_participante where participante=\'"+usuario+ "\' )and partido="+partido;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Codigo"] + "," + lector["golesL"] + "," + lector["golesV"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return "";
+                }
+            }
+
+
+        }
+
+        public string getEpartido(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select B.nombre as Elocal,C.nombre as visitante from (Select Elocal,Evisitante from Equipo_Partido Where partido="+codigo+ ")A,(Select idequipo,nombre from Equipo)B,(Select idequipo,nombre from Equipo)C Where A.Elocal=B.idequipo and A.Evisitante=C.idequipo";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Elocal"] + "," + lector["visitante"];
                         }
 
 

@@ -28,7 +28,7 @@ namespace Proyecto2_Bases1
 
                 if (b[1].Equals("-"))
                 {
-                    ListaR += "<tr><td align=\"right\">" + b[0] + "</td><td align=\"center\">" + b[1] + "</td><td align=\"center\"><a href=\"Partido.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">ver</a></td><td  align=\"center\">" + b[2] + "</td><td>" + b[3] + "</td><td><a href=\"Partido.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">Pronosticar</a</td></tr>\n ";
+                    ListaR += "<tr><td align=\"right\">" + b[0] + "</td><td align=\"center\">" + b[1] + "</td><td align=\"center\"><a href=\"Partido.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">ver</a></td><td  align=\"center\">" + b[2] + "</td><td>" + b[3] + "</td><td><a href=\"Pronostico.aspx?Cuenta=" + Usuario + "&codigo=+" + b[4] + "\">Pronosticar</a</td></tr>\n ";
                 }
                 else
                 {
