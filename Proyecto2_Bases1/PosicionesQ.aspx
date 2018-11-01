@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PosicionesQ.aspx.cs" Inherits="Proyecto2_Bases1.PosicionesQ" %>
 
 <!DOCTYPE html>
 
@@ -114,8 +114,8 @@
                             <li>
                                 <a href="#">Participantes</a>
                                 <ul>
-                                    <li><a href="LParticipantes.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado General</a></li>
-                                    <li><a href="PosicionesQ.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Posiciones</a></li>
+                                    <li><a href="#">Listado General</a></li>
+                                    <li><a href="#">Posiciones</a></li>
                                 </ul>
                             </li>
                             <li><a href="Inicio.aspx?logof=1">Cerrar Sesión</a></li>
@@ -134,6 +134,49 @@
         <!-- Main -->
 
         <section class="box">
+           <header>
+                <h2>Plantel</h2>
+            </header>
+            <div class="box">
+                <form method="post" action="#">
+                    <div class="row gtr-50 gtr-uniform">
+                        
+
+                        <div class="col-6 col-12-mobilep">
+                            <select name="Torneos" id="Torneos">
+                                <option value="">- Torneos -</option>
+                                <%= this.LTorneo %>
+                            </select>
+                        </div>
+
+
+                        <div class="col-12">
+                            <ul class="actions special">
+                                <li>
+                                    <input runat="server" type="submit" value="Ver" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Posicion</th>
+                            <th>Participante</th>
+                            <th>Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaP %>
+                    </tbody>
+
+                </table>
+            </div>
+
         </section>
 
     </section>
@@ -155,4 +198,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

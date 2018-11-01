@@ -1061,47 +1061,6 @@ namespace Proyecto2_Bases1
 
         }
 
-        public string getPosicionesP()
-        {
-            string respuesta = "";
-            using (OracleConnection con = new OracleConnection(Cadena))
-            {
-                try
-                {
-                    con.Open();
-
-                    using (OracleCommand cmd = con.CreateCommand())
-                    {
-                        cmd.CommandText = "Select  rank() over (order by Puntos desc)Puesto, Participante,puntos from Quiniela where pago=1";
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        OracleDataReader lector = cmd.ExecuteReader();
-
-                        while (lector.Read())
-                        {
-
-                            respuesta += lector["Puesto"] + "," + lector["Participante"] + "," + lector["puntos"] + ";";
-                        }
-
-
-
-                    }
-
-                    con.Close();
-
-                    return respuesta;
-
-                }
-                catch (Exception e)
-                {
-
-                    Console.WriteLine(e.Message);
-                    return null;
-                }
-            }
-
-
-        }
-
         public string getPartidoE(string codigo)
         {
             string respuesta = "";
