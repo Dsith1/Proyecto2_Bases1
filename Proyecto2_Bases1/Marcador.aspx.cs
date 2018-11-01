@@ -45,30 +45,22 @@ namespace Proyecto2_Bases1
             if (!IsPostBack)
             {
 
-                string operacion = cpartido + "," + Nlocal + "," + NVisitante + "," + Usuario;
 
-                if (update == 1)
+
+
+                if (Nlocal != null && NVisitante != null)
                 {
-                    if (Nlocal != null && NVisitante != null)
-                    {
 
-                        a = new Coneccion("ActulizaResultadoUser", operacion, 3);
-                        Response.Redirect(Request.RawUrl);
-                    }
+                    string idlocal = a.getNOmbreE(Nomlocal);
+                    string idvisita = a.getNOmbreE(Nomvisitante);
+                    string idtorneo = a.getTorneoP(cpartido);
 
+                    string operacion = cpartido + "," + idlocal + "," + Nlocal + "," + idvisita + "," + NVisitante + "," + idtorneo;
+
+                    a = new Coneccion("ResultadoReal", operacion, 4);
+                    Response.Redirect(Request.RawUrl);
                 }
-                else
-                {
-                    if (Nlocal != null && NVisitante != null)
-                    {
 
-                        a = new Coneccion("ResultadoUsuario", operacion, 3);
-                        Response.Redirect(Request.RawUrl);
-                    }
-
-
-
-                }
             }
 
         }

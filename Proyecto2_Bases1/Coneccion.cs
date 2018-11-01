@@ -115,16 +115,24 @@ namespace Proyecto2_Bases1
                             inval.Value = parametro[0];
                             cmd.Parameters.Add(inval);
 
-                            inval = new OracleParameter("Glocal", OracleDbType.Int16);
+                            inval = new OracleParameter("Elocal", OracleDbType.Int16);
                             inval.Value = parametro[1];
                             cmd.Parameters.Add(inval);
 
-                            inval = new OracleParameter("Gvisita", OracleDbType.Int16);
+                            inval = new OracleParameter("Glocal", OracleDbType.Int16);
                             inval.Value = parametro[2];
                             cmd.Parameters.Add(inval);
 
-                            inval = new OracleParameter("Usuario", OracleDbType.Varchar2);
+                            inval = new OracleParameter("Evisita", OracleDbType.Int16);
                             inval.Value = parametro[3];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Gvisita", OracleDbType.Int16);
+                            inval.Value = parametro[4];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Ctorneo", OracleDbType.Int16);
+                            inval.Value = parametro[5];
                             cmd.Parameters.Add(inval);
 
 
@@ -859,6 +867,88 @@ namespace Proyecto2_Bases1
                         {
 
                             respuesta += lector["Elocal"] + "," + lector["visitante"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getNOmbreE(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select idequipo from Equipo where nombre=\'" + codigo+"\'";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["idequipo"] +"";
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getTorneoP(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select Torneo from Partido Where codigo=" + codigo;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Torneo"] + "";
                         }
 
 
