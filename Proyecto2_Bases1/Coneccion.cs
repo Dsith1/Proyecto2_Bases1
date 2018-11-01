@@ -106,7 +106,7 @@ namespace Proyecto2_Bases1
 
 
                         }
-                        else if (tipo == )//Registrar Resultado Real
+                        else if (tipo == 4)//Registrar Resultado Real
                         {
                             string[] parametro = parametros.Split(',');
 
