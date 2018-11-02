@@ -178,6 +178,23 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == 6)//Registrar Equipo
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("NNombre", OracleDbType.Varchar2);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("NPais", OracleDbType.Int16);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
                     }
 
                     con.Close();

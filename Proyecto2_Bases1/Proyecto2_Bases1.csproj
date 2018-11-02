@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarEquipo.aspx" />
     <Content Include="CargaMarcadores.aspx" />
     <Content Include="CargaPronostico.aspx" />
     <Content Include="CargaUsuarios.aspx" />
@@ -76,6 +77,7 @@
     <Content Include="Grupos.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="LEquipos.aspx" />
+    <Content Include="LEquiposA.aspx" />
     <Content Include="LGoleadores.aspx" />
     <Content Include="LJugadores.aspx" />
     <Content Include="Login.aspx" />
@@ -98,6 +100,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarEquipo.aspx.cs">
+      <DependentUpon>AgregarEquipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEquipo.aspx.designer.cs">
+      <DependentUpon>AgregarEquipo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CargaMarcadores.aspx.cs">
       <DependentUpon>CargaMarcadores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +159,13 @@
     </Compile>
     <Compile Include="LEquipos.aspx.designer.cs">
       <DependentUpon>LEquipos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LEquiposA.aspx.cs">
+      <DependentUpon>LEquiposA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LEquiposA.aspx.designer.cs">
+      <DependentUpon>LEquiposA.aspx</DependentUpon>
     </Compile>
     <Compile Include="LGoleadores.aspx.cs">
       <DependentUpon>LGoleadores.aspx</DependentUpon>

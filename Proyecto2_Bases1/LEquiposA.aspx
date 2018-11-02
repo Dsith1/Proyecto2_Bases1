@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LEquiposA.aspx.cs" Inherits="Proyecto2_Bases1.LEquiposA" %>
 
 <!DOCTYPE html>
 
@@ -155,4 +155,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

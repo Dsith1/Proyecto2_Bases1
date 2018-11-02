@@ -57,6 +57,10 @@ namespace Proyecto2_Bases1
 
                             string pago = usuario[3];
 
+                            operacion = "1," + ncompleto;
+                            a = new Coneccion("EntrarQuiniela", operacion, 2);
+
+
                             if (pago.Equals("100"))
                             {
                                 operacion = "1," + ncompleto;

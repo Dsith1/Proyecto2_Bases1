@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgregarEquipo.aspx.cs" Inherits="Proyecto2_Bases1.AgregarEquipo" %>
 
 <!DOCTYPE html>
 
@@ -75,7 +75,7 @@
                         <ul>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Planteles</a></li>
-                            <li><a href="AgregarEquipo.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Equipo</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Equipo</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Jugador a Equipo</a></li>
 
                         </ul>
@@ -134,6 +134,32 @@
         <!-- Main -->
 
         <section class="box">
+            <header>
+                <h2>Nuevo Equipo</h2>
+            </header>
+            <div class="box">
+                <form method="post" action="#">
+                    <div class="row gtr-50 gtr-uniform">
+                        <div class="col-6 col-12-mobilep">
+                            <input type="text" name="Nombre" id="Nombre" value="" placeholder="Nombre" />
+                        </div>
+
+                        <div class="col-6 col-12-mobilep">
+                            <select name="Pais" id="Pais">
+                                <option value="">- Pais -</option>
+                                <%= this.OPais %>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <ul class="actions special">
+                                <li>
+                                    <input runat="server" type="submit" value="Guardar" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
 
     </section>
@@ -155,4 +181,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-
