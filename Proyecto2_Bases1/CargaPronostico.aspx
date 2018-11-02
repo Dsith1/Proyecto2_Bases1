@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CargaPronostico.aspx.cs" Inherits="Proyecto2_Bases1.CargaPronostico" %>
 
 <!DOCTYPE html>
 
@@ -106,8 +106,8 @@
                             <li>
                                 <a href="#">Cargas</a>
                                 <ul>
-                                    <li><a href="CargaUsuarios.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Usuarios</a></li>
-                                    <li><a href="CargaPronostico.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Pronosticos</a></li>
+                                    <li><a href="#">Usuarios</a></li>
+                                    <li><a href="#">Pronosticos</a></li>
                                     <li><a href="#">Marcadores</a></li>
                                 </ul>
                             </li>
@@ -134,6 +134,25 @@
         <!-- Main -->
 
         <section class="box">
+            <form method="post" action="#" runat="server" enctype="multipart/form-data">
+										<div class="row gtr-uniform gtr-50">
+												
+                                            
+
+                                            <div class="col-6 col-12-narrower">
+												<input type="file" id="Archivo" name="Archivo"/>
+												<label for="Adjunto">Adjuntar archivos</label>
+											</div>
+
+                                           <div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" value="Cargar" /></li>
+												</ul>
+											</div>
+								</div>
+                                    
+									</form>
+
         </section>
 
     </section>
@@ -155,4 +174,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

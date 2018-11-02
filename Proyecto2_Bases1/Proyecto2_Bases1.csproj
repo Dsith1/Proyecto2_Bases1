@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CargaPronostico.aspx" />
     <Content Include="CargaUsuarios.aspx" />
     <Content Include="DetalleJ.aspx" />
     <Content Include="Global.asax" />
@@ -96,6 +97,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CargaPronostico.aspx.cs">
+      <DependentUpon>CargaPronostico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CargaPronostico.aspx.designer.cs">
+      <DependentUpon>CargaPronostico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CargaUsuarios.aspx.cs">
       <DependentUpon>CargaUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
