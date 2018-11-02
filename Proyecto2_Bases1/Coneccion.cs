@@ -148,6 +148,36 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == 5)//Registrar Pais
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("NNombre", OracleDbType.Varchar2);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            if (parametro[1].Equals(""))
+                            {
+
+                                inval = new OracleParameter("NFederacion", OracleDbType.Int16);
+                                inval.Value = null;
+                                cmd.Parameters.Add(inval);
+                            }
+                            else
+                            {
+                                inval = new OracleParameter("NFederacion", OracleDbType.Int16);
+                                inval.Value = parametro[1];
+                                cmd.Parameters.Add(inval);
+                            }
+
+                            
+
+                           
+                            cmd.ExecuteNonQuery();
+
+
+                        }
                     }
 
                     con.Close();
@@ -1137,6 +1167,82 @@ namespace Proyecto2_Bases1
 
                     Console.WriteLine(e.Message);
                     return null;
+                }
+            }
+
+
+        }
+
+        public string getPaisN(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select idPais from Pais Where nombre=\'" + codigo + "\'";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["idPais"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public bool getPaisNE(string codigo)
+        {
+            bool respuesta = false;
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select idPais from Pais Where nombre=\'" + codigo + "\'";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        respuesta = lector.Read();
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return false;
                 }
             }
 
