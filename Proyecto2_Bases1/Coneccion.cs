@@ -200,7 +200,7 @@ namespace Proyecto2_Bases1
                             string[] parametro = parametros.Split(',');
 
 
-                            OracleParameter inval = new OracleParameter("codigo", OracleDbType.Int16);
+                            OracleParameter inval = new OracleParameter("Ncodigo", OracleDbType.Int16);
                             inval.Value = parametro[0];
                             cmd.Parameters.Add(inval);
 
@@ -231,6 +231,83 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == 9)//Crear Jugador
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("NNombre", OracleDbType.Varchar2);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Nposicion", OracleDbType.Varchar2);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Nestatura", OracleDbType.Int16);
+                            inval.Value = parametro[2];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Npeso", OracleDbType.Int16);
+                            inval.Value = parametro[3];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Npais", OracleDbType.Int16);
+                            inval.Value = parametro[4];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Nnacimiento", OracleDbType.Varchar2);
+                            inval.Value = parametro[5];
+                            cmd.Parameters.Add(inval);
+
+ 
+                            cmd.ExecuteNonQuery();
+
+
+                        }
+                        else if (tipo == 10)//Actualizar Jugador
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("Ncodigo", OracleDbType.Int16);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("NNombre", OracleDbType.Varchar2);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Nposicion", OracleDbType.Varchar2);
+                            inval.Value = parametro[2];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Nestatura", OracleDbType.Int16);
+                            inval.Value = parametro[3];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Npeso", OracleDbType.Int16);
+                            inval.Value = parametro[4];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Ngoles", OracleDbType.Int16);
+                            inval.Value = parametro[5];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Npais", OracleDbType.Int16);
+                            inval.Value = parametro[6];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("Nnacimiento", OracleDbType.Varchar2);
+                            inval.Value = parametro[7];
+                            cmd.Parameters.Add(inval);
+
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
+
                     }
 
                     con.Close();
@@ -378,7 +455,7 @@ namespace Proyecto2_Bases1
 
                     using (OracleCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "Select Nombre,goles,posicion,estatura,peso,(to_number(to_char(sysdate,'YYYY')) - to_number(to_char(nacimiento,'YYYY'))) as edad ,to_char(nacimiento,'dd/mm/yyyy') as nacimiento from jugador Where codigo=\'" + codigo + "\'";
+                        cmd.CommandText = "Select Nombre,goles,posicion,estatura,peso,(to_number(to_char(sysdate,'YYYY')) - to_number(to_char(nacimiento,'YYYY'))) as edad ,to_char(nacimiento,'yyyy-mm-dd') as nacimiento from jugador Where codigo=\'" + codigo + "\'";
                         cmd.CommandType = System.Data.CommandType.Text;
                         OracleDataReader lector = cmd.ExecuteReader();
 
@@ -1403,6 +1480,88 @@ namespace Proyecto2_Bases1
                         {
 
                             respuesta += lector["nombre"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getEquipoPais(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select Pais from Equipo where idequipo=" + codigo;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["Pais"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getJugadorPais(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select NACIONALIDAD from Jugador where codigo=" + codigo;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["NACIONALIDAD"];
                         }
 
 

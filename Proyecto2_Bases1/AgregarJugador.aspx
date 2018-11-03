@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgregarJugador.aspx.cs" Inherits="Proyecto2_Bases1.AgregarJugador" %>
 
 <!DOCTYPE html>
 
@@ -63,9 +63,9 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Jugadores</a>
                         <ul>
-                            <li><a href="LJugadoresA.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
-                            <li><a href="AgregarJugador.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Jugador</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Jugador</a></li>
 
                         </ul>
                     </li>
@@ -134,6 +134,56 @@
         <!-- Main -->
 
         <section class="box">
+            <header>
+                <h2>Registro</h2>
+            </header>
+            <div class="box">
+                <form method="post" action="#">
+                    <div class="row gtr-50 gtr-uniform">
+
+                        <div class="col-6 col-12-mobilep">
+                            <input type="text" name="Nombre" id="Nombre" value="" placeholder="Nombre" />
+                        </div>
+
+                        <div class="col-6 col-12-mobilep">
+                        <select name="Posicion" id="Posicion">
+                            <option value="">- Posicion -</option>
+                            <option value="GK">Portero</option>
+                            <option value="DF">Defensa</option>
+                            <option value="MF">Medio</option>
+                            <option value="FW">Delantero</option>
+                        </select>
+                        </div>
+
+                        <div class="col-6 col-12-mobilep">
+                            <input type="text" name="Estatura" id="Estatura" value="" placeholder="Estatura" />
+                        </div>
+
+                        <div class="col-6 col-12-mobilep">
+                            <input type="text" name="Peso" id="Peso" value="" placeholder="Peso" />
+                        </div>
+
+                        <div class="col-6 col-12-mobilep">
+                            <input type="date" name="Nacimiento" id="Nacimiento" value="" />
+                        </div>
+
+                        
+                        <div class="col-6 col-12-mobilep">
+                            <select name="Pais" id="Pais">
+                                <option value="">- Pais -</option>
+                                <%= this.OPais %>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <ul class="actions special">
+                                <li>
+                                    <input runat="server" type="submit" value="Registrarse" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
 
     </section>
@@ -155,4 +205,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-

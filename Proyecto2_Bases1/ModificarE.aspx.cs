@@ -26,13 +26,24 @@ namespace Proyecto2_Bases1
 
             nombreE = Request.Form["Nombre"];
 
+            string pais = a.getEquipoPais(cpais);
+
             string[] Paises = LPaises.Split(';');
 
             for (int i = 0; i < (Paises.Length - 1); i++)
             {
                 string[] opcion = Paises[i].Split(',');
 
-                OPais += "<option value=\"" + opcion[0] + "\">" + opcion[1] + "</option>\n";
+                if (opcion[0].Equals(pais))
+                {
+                    OPais += "<option value=\"" + opcion[0] + "\" selected=\"selected\">" + opcion[1] + "</option>\n";
+                }
+                else
+                {
+                    OPais += "<option value=\"" + opcion[0] + "\">" + opcion[1] + "</option>\n";
+                }
+
+                
             }
             string Pais = Request.Form["Pais"];
 

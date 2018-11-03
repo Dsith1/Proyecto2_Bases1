@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarEquipo.aspx" />
+    <Content Include="AgregarJugador.aspx" />
     <Content Include="CargaMarcadores.aspx" />
     <Content Include="CargaPronostico.aspx" />
     <Content Include="CargaUsuarios.aspx" />
@@ -80,12 +81,14 @@
     <Content Include="LEquiposA.aspx" />
     <Content Include="LGoleadores.aspx" />
     <Content Include="LJugadores.aspx" />
+    <Content Include="LJugadoresA.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LParticipantes.aspx" />
     <Content Include="Marcador.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuA.aspx" />
     <Content Include="ModificarE.aspx" />
+    <Content Include="ModificarJ.aspx" />
     <Content Include="Partido.aspx" />
     <Content Include="Plantel.aspx" />
     <Content Include="Posiciones.aspx" />
@@ -107,6 +110,13 @@
     </Compile>
     <Compile Include="AgregarEquipo.aspx.designer.cs">
       <DependentUpon>AgregarEquipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarJugador.aspx.cs">
+      <DependentUpon>AgregarJugador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarJugador.aspx.designer.cs">
+      <DependentUpon>AgregarJugador.aspx</DependentUpon>
     </Compile>
     <Compile Include="CargaMarcadores.aspx.cs">
       <DependentUpon>CargaMarcadores.aspx</DependentUpon>
@@ -182,6 +192,13 @@
     <Compile Include="LJugadores.aspx.designer.cs">
       <DependentUpon>LJugadores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LJugadoresA.aspx.cs">
+      <DependentUpon>LJugadoresA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LJugadoresA.aspx.designer.cs">
+      <DependentUpon>LJugadoresA.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -223,6 +240,13 @@
     </Compile>
     <Compile Include="ModificarE.aspx.designer.cs">
       <DependentUpon>ModificarE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarJ.aspx.cs">
+      <DependentUpon>ModificarJ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarJ.aspx.designer.cs">
+      <DependentUpon>ModificarJ.aspx</DependentUpon>
     </Compile>
     <Compile Include="Partido.aspx.cs">
       <DependentUpon>Partido.aspx</DependentUpon>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuA.aspx.cs" Inherits="Proyecto2_Bases1.MenuA" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LJugadoresA.aspx.cs" Inherits="Proyecto2_Bases1.LJugadoresA" %>
 
 <!DOCTYPE html>
 
@@ -63,7 +63,7 @@
                     <li>
                         <a href="#" class="icon fa-angle-down">Jugadores</a>
                         <ul>
-                            <li><a href="LJugadoresA.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
+                            <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Listado</a></li>
                             <li><a href="NuevaCarpeta.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Goles</a></li>
                             <li><a href="AgregarJugador.aspx?Cuenta=<%=Request.QueryString["Cuenta"]%>">Agregar Jugador</a></li>
 
@@ -134,6 +134,26 @@
         <!-- Main -->
 
         <section class="box">
+             <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Posicion</th>
+                            <th>Pais</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaJ %>
+                    </tbody>
+
+                </table>
+            </div>
+            <ul>
+            </ul>
         </section>
 
     </section>
@@ -155,4 +175,3 @@
     <script src="Estilos/assets/js/main.js"></script>
 </body>
 </html>
-
