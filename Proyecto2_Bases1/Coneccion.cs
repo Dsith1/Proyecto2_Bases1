@@ -195,6 +195,42 @@ namespace Proyecto2_Bases1
 
 
                         }
+                        else if (tipo == 7)//Eliminar Equipo
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("codigo", OracleDbType.Int16);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
+                        else if (tipo == 8)//Eliminar Equipo
+                        {
+                            string[] parametro = parametros.Split(',');
+
+
+                            OracleParameter inval = new OracleParameter("codigo", OracleDbType.Int16);
+                            inval.Value = parametro[0];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("NNombre", OracleDbType.Varchar2);
+                            inval.Value = parametro[1];
+                            cmd.Parameters.Add(inval);
+
+                            inval = new OracleParameter("NPais", OracleDbType.Int16);
+                            inval.Value = parametro[2];
+                            cmd.Parameters.Add(inval);
+
+
+                            cmd.ExecuteNonQuery();
+
+
+                        }
                     }
 
                     con.Close();
@@ -1326,6 +1362,47 @@ namespace Proyecto2_Bases1
                         {
 
                             respuesta += lector["idequipo"];
+                        }
+
+
+
+                    }
+
+                    con.Close();
+
+                    return respuesta;
+
+                }
+                catch (Exception e)
+                {
+
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+
+
+        }
+
+        public string getEquipoNombre(string codigo)
+        {
+            string respuesta = "";
+            using (OracleConnection con = new OracleConnection(Cadena))
+            {
+                try
+                {
+                    con.Open();
+
+                    using (OracleCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "Select nombre  from Equipo where idequipo=" + codigo ;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        OracleDataReader lector = cmd.ExecuteReader();
+
+                        while (lector.Read())
+                        {
+
+                            respuesta += lector["nombre"];
                         }
 
 

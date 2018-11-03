@@ -85,6 +85,7 @@
     <Content Include="Marcador.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuA.aspx" />
+    <Content Include="ModificarE.aspx" />
     <Content Include="Partido.aspx" />
     <Content Include="Plantel.aspx" />
     <Content Include="Posiciones.aspx" />
@@ -215,6 +216,13 @@
     </Compile>
     <Compile Include="MenuA.aspx.designer.cs">
       <DependentUpon>MenuA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarE.aspx.cs">
+      <DependentUpon>ModificarE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarE.aspx.designer.cs">
+      <DependentUpon>ModificarE.aspx</DependentUpon>
     </Compile>
     <Compile Include="Partido.aspx.cs">
       <DependentUpon>Partido.aspx</DependentUpon>

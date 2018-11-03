@@ -134,6 +134,28 @@
         <!-- Main -->
 
         <section class="box">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Confederacion</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <%= this.ListaE %>
+                    </tbody>
+
+                </table>
+            </div>
+            <ul>
+            </ul>
+
         </section>
 
     </section>

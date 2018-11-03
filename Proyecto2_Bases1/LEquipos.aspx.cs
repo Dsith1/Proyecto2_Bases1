@@ -14,8 +14,11 @@ namespace Proyecto2_Bases1
         protected void Page_Load(object sender, EventArgs e)
         {
             string Usuario = Request.QueryString["Cuenta"];
+            
 
             Coneccion a = new Coneccion();
+
+            
 
             string players = a.getEquipos();
 
@@ -29,6 +32,8 @@ namespace Proyecto2_Bases1
 
                
             }
+
+           
         }
     }
 }
